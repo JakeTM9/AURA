@@ -16,7 +16,7 @@ If you want to train the model using more epochs or a different way. Trainer.py 
 The app is easy to run.
 Requirements: Python 3 and pip 
 1. Download the code
-2. Navigate to the AURA directory in CMD
+2. Navigate to the AURA-main directory in CMD
 3. run "py -3 -m venv .venv"
 4. run ".venv\scripts\activate"
 5. run "pip install -r requirements.txt"
