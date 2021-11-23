@@ -16,10 +16,10 @@ If you want to train the model using more epochs or a different way. Trainer.py 
 The app is easy to run.
 Requirements: Python 3 and pip 
 1. Download the code
-2. Navigate to the AURA-main directory in CMD
+2. Navigate to the AURA-main directory in CMD (If there are 2, use the deeper one)
 3. run "py -3 -m venv .venv"
 4. run ".venv\scripts\activate"
 5. run "pip install -r requirements.txt"
 6. run "flask run"
-7. Navigate to the address output in the console
+7. Navigate to the address output in the console (Example: http://localhost:5000/)
 
