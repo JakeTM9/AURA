@@ -5,3 +5,4 @@ tensorflow
 pyyaml 
 h5py
 werkzeug
+google_play_scraper

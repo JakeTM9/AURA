@@ -19,19 +19,19 @@
       <h2>Data Input: </h2>
       <table>
         <tr>
-          <th>Rating</th>
+          <th>Score</th>
           <th>Review</th>
-          <th>Author</th>
+          <th>Username</th>
           <th>Date</th>
 
         </tr>
         
           {% for index, row in allDataDF.iterrows() %}
             <tr>
-                <td>{{row['Rating']}}</td>
-                <td>{{row['Review']}}</td>
-                <td>{{row['Author']}}</td>
-                <td>{{row['Date']}}</td>
+                <td>{{row['score']}}</td>
+                <td>{{row['content']}}</td>
+                <td>{{row['userName']}}</td>
+                <td>{{row['at']}}</td>
                 
             </tr>
         <!-- <h2>Value: </h2> -->
