@@ -21,3 +21,7 @@ The app has a saved tensorflow model to make the prediction. The model uses [Twi
 I followed [this guide](https://techvidvan.com/tutorials/python-sentiment-analysis/) to create the sentiment analysis model and [this guide](https://www.tensorflow.org/tutorials/keras/save_and_load) to save the model
 
 If you want to train the model using more epochs or a different way. Trainer.py is included and can be run. Be sure to delete "sentiment_analysis_model.h5" from the app directory in order to save the new model.
+
+Datasets used in training the model for clustering were obtained from the following sources.
+- google_play_reviews.csv: https://www.kaggle.com/prakharrathi25/google-play-store-reviews
+- apple_store_reviews.csv: https://www.kaggle.com/yamqwe/app-store-reviews. This dataset originates from CrwalFeeds.
