@@ -1,0 +1,4 @@
+##Virtual Env
+/venv
+##Flask cache
+/__pycache__
