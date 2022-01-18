@@ -32,10 +32,11 @@ def wordcloud_topics(model, features, no_top_words=40):
         plt.show()
 
 
-df = pd.read_csv('tweets_01-08-2021.csv')
+df = pd.read_csv('google_play_reviews.csv')
+print(df.head())
 
 tfidf_text_vectorizer = TfidfVectorizer(stop_words=stopwords, min_df=5, max_df=0.7)
-tfidf_text_vectors = tfidf_text_vectorizer.fit_transform(df['text'])
+tfidf_text_vectors = tfidf_text_vectorizer.fit_transform(df['content'])
 print(tfidf_text_vectors.shape)
 
 nmf_model = NMF(n_components=6)
