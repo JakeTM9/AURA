@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/style.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Create from "./pages/Create";
+import Analysis from "./pages/Analysis";
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
-
   useEffect(() => {
     fetch('/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
@@ -12,25 +19,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-
-      <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <p>The current time is {currentTime}.</p>
-      </header>
-    </div>
+    <>
+      {/* This is the alias of BrowserRouter i.e. Router */}
+      <Router>
+        <Routes>
+          {/* This route is for home component 
+          with exact path "/", in component props 
+          we passes the imported component*/}
+          <Route path="/home" element={<Home/>} />
+            
+          {/* This route is for about component 
+          with exact path "/create", in component 
+          props we passes the imported component*/}
+          <Route path="/create" element={<Create/>} />
+            
+          {/* This route is for contactus component
+          with exact path "/analysis", in 
+          component props we passes the imported component*/}
+          <Route path="/analysis" element={<Analysis/>} />
+            
+          {/* If any route mismatches the upper 
+          route endpoints then, redirect triggers 
+          and redirects app to home component with to="/" */}
+          <Route path="*" element={<Navigate to="/home" />}/>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
