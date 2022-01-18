@@ -11,12 +11,7 @@ import Create from "./pages/Create";
 import Analysis from "./pages/Analysis";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
+  const [analysisReviewData, setAnalysisReviewData] = useState('');
 
   return (
     <>
@@ -31,12 +26,12 @@ function App() {
           {/* This route is for about component 
           with exact path "/create", in component 
           props we passes the imported component*/}
-          <Route path="/create" element={<Create/>} />
+          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData}/>} />
             
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
-          <Route path="/analysis" element={<Analysis/>} />
+          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData}/>} />
             
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 

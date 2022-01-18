@@ -3,25 +3,22 @@ import '../css/style.css';
 import Home from "./Home";
 import Create from "./Create";
   
-const Analysis = () => {
-    const [currentTime, setCurrentTime] = useState(0);
-    useEffect(() => {
-      fetch('/time').then(res => res.json()).then(data => {
-        setCurrentTime(data.time);
-      });
-    }, []);
+const Analysis = ({reviewData}) => {
     return (
         <div>
             <div id="container">
                 <header>
-                    <h1>AURA</h1>
-                    <h2>Analysis</h2>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <div className="group">
-                        <p>The current time is {currentTime}.</p>
+                    <h1>AURA Analysis</h1>
+                    <div className="float-left">
+                            <a href="/home">
+                            <button className="bnCA ">Back to Home</button>
+                            </a>
                     </div>
+                    <div className="float-right">
+                            <a href="/analysis">
+                            <button className="bnCA ">Save Analysis</button>
+                            </a>
+                        </div>
                 </header>
             </div>
         </div>
