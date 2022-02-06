@@ -1,3 +1,8 @@
 Flask 
 python-dotenv
 google_play_scraper
+pandas
+matplotlib
+wordcloud
+sklearn
+spacy

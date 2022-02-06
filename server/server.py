@@ -1,6 +1,6 @@
 import time
 from flask import Flask, request, jsonify
-from scripts import scraper
+from scripts import scraper, topic_model
 
 app = Flask(__name__)
 
@@ -14,5 +14,11 @@ def get_review_data():
     google_play_id = request.args['google_play_id']
     number_reviews = request.args['number_reviews']
     file_name = request.args['file_name']
-    data = scraper.scrapeOnly(google_play_id, number_reviews)
+    data = scraper.scrapeAndSave(google_play_id, number_reviews)
+    #items = topic_model.run_topic_model()
     return jsonify(data[0])
+
+@app.route('/api/getTopicModelData')
+def get_topic_model_data():
+    items = topic_model.run_topic_model()
+    return jsonify(items)

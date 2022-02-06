@@ -5,11 +5,12 @@ import Analysis from "./Analysis";
 import axios from 'axios';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
-const Create = ({updateReviewData}) => {
+const Create = ({updateReviewData, updateTopicModelData}) => {
     const [google_play_id, set_google_play_id] = useState('');
     const [number_reviews, set_number_reviews] = useState('');
     const [file_name, set_file_name] = useState('');
     const [reviewData, setReviewData] = useState('');
+    const [topicModelData, setTopicModelData] = useState('');
     const [createDisabled, setCreateDisabled] = useState(false);
 
     const change_google_play_id = (event) => {
@@ -51,18 +52,33 @@ const Create = ({updateReviewData}) => {
             console.log(error);
         });
     }
+
+    async function getTopicModelData() {
+        let res = await axios.get("/api/getTopicModelData")
+        .then((res) => setTopicModelData(res.data))
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+    
     const Navigate = useNavigate();
     const goToAnalysis = event => Navigate('/analysis', {replace:true});
-    
 
     useEffect(() => {
-        
-        if(reviewData != ""){
+        if(reviewData !== ""){
             console.log(reviewData);
             updateReviewData(reviewData);
-            goToAnalysis();
+            getTopicModelData();
         }
       }, [reviewData]);
+    
+    useEffect(() => {
+        if(topicModelData !== ""){
+            console.log(topicModelData);
+            updateTopicModelData(topicModelData);
+            goToAnalysis();
+        }
+    }, [topicModelData]);
 
     return (
         <div>
@@ -88,7 +104,7 @@ const Create = ({updateReviewData}) => {
                         <button className={`bnCA ${createDisabled ? `disabled` : ``}`} onClick={transferValue}>Create Analysis</button>
                     </div>
                     <br></br>
-                    <h3 className={`${createDisabled ? `` : `hidden`}`}>Please wait a moment whil we get your reviews...</h3>
+                    <h3 className={`${createDisabled ? `` : `hidden`}`}>Please wait a moment while we generate your Analysis...</h3>
                     
                 </section>
             </div>

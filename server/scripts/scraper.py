@@ -38,6 +38,13 @@ def scrapeOnly(google_play_id, num_reviews):
     review_data = reviews(google_play_id, count = int(num_reviews))
     return review_data
 
+def scrapeAndSave(google_play_id, num_reviews):
+    review_data = reviews(google_play_id, count = int(num_reviews))
+    uploads_dir = os.path.join(os.getcwd(), 'review_data')
+    finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
+    ImportToCSV(review_data, finalPath)
+    return review_data
+
 
 
 #if __name__ == '__main__':

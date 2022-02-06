@@ -12,7 +12,7 @@ import Analysis from "./pages/Analysis";
 
 function App() {
   const [analysisReviewData, setAnalysisReviewData] = useState('');
-
+  const [analysisTopicModelData, setAnalysisTopicModelData] = useState('');
   return (
     <>
       {/* This is the alias of BrowserRouter i.e. Router */}
@@ -26,12 +26,12 @@ function App() {
           {/* This route is for about component 
           with exact path "/create", in component 
           props we passes the imported component*/}
-          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData}/>} />
+          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelData = {setAnalysisTopicModelData}/>} />
             
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
-          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData}/>} />
+          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
             
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 

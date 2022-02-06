@@ -1,16 +1,16 @@
 # Big Changes Coming
 
-in term 1
-cd client
-npm install
-npm run start
+1. in term 1
+2. cd client
+3. npm install
+4. npm run start
 
-in term 2
-cd server
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-flask run
+1. in term 2
+2. cd server
+3. python -m venv venv
+4. venv\Scripts\activate
+5. pip install -r requirements.txt
+6. flask run
 
 
 ## Python Flask App: App Review Analysis + Positive/Negative Sentiment Analysis
