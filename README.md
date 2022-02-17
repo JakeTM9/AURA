@@ -13,8 +13,8 @@ TODO: add more of a description
 
 ## Requirements
 
-- Node.js (tested with v16.13.1 on Windows 10)
-- Python 3.8
+- [Node.js](https://nodejs.org/en/download/) (tested with v16.13.1 on Windows 10)
+- [Python 3.8.X](https://www.python.org/downloads/) (any version of 3.8 will do)
 
 
 ## To Install
