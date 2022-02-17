@@ -1,41 +1,49 @@
-# Big Changes Coming
+# AURA (Analyzing User Reviews for Better Design of Mobile Apps)
 
-1. in term 1
-2. cd client
-3. npm install
-4. npm run start
+  
 
-1. in term 2
-2. cd server
-3. python -m venv venv
-4. venv\Scripts\activate
-5. pip install -r requirements.txt
-6. flask run
+This project is the senior design final project of
+- Henry Bish
+- Steven Hagedorn
+- Daniel Stoy
+- Jakob Wardega
+
+TODO: add more of a description
+  
+
+## Requirements
+
+- Node.js (tested with v16.13.1 on Windows 10)
+- Python 3.8
 
 
-## Python Flask App: App Review Analysis + Positive/Negative Sentiment Analysis
+## To Install
+Clone the repository
 
-This is a minimal Flask app that has the user upload a csv of user reviews with columns: 'Rating, Review, Author, and Date'. The csv data is then displayed as a table. More functionality to come soon. The other thing the user can do is use the Sentiment Analysis functionalityt from the home page. To do this input a user review and hit the submit button. The user is then redirected to a page that displays the review as well as the prediction.
+    git clone https://github.com/JakeTM9/AURA.git
 
-## Instructions
+Navigate to the root directory
 
-The app is easy to run.
-Requirements: Python 3 and pip 
-1. Download the code
-2. Navigate to the AURA-main directory in CMD (If there are 2, use the deeper one)
-3. run "py -3 -m venv .venv"
-4. run ".venv\scripts\activate"
-5. run "pip install -r requirements.txt" (may take about 5 minutes)
-6. run "flask run"
-7. Navigate to the address output in the console (Example: http://localhost:5000/)
+    cd AURA
 
-## More on Sentiment Analysis:
-The app has a saved tensorflow model to make the prediction. The model uses [Twitter Airline Review Data](https://www.kaggle.com/crowdflower/twitter-airline-sentiment) to train.
+## To Run
+In Terminal #1 (from root directory):
 
-I followed [this guide](https://techvidvan.com/tutorials/python-sentiment-analysis/) to create the sentiment analysis model and [this guide](https://www.tensorflow.org/tutorials/keras/save_and_load) to save the model
+    cd server
+    python -m venv venv
+    .venv\Scripts\activate
+    pip install requirements.txt
+    flask run
 
-If you want to train the model using more epochs or a different way. Trainer.py is included and can be run. Be sure to delete "sentiment_analysis_model.h5" from the app directory in order to save the new model.
+Open up a new terminal
+In Terminal #2 (from root directory)
 
-Datasets used in training the model for clustering were obtained from the following sources.
-- google_play_reviews.csv: https://www.kaggle.com/prakharrathi25/google-play-store-reviews
-- apple_store_reviews.csv: https://www.kaggle.com/yamqwe/app-store-reviews. This dataset originates from CrwalFeeds.
+    cd client
+    npm install
+    npm run start
+
+## Files
+
+All front end files can be found in the client directory. The client makes asynchronous requests to the server inside of react components like the [Create page](https://github.com/JakeTM9/AURA/blob/dev/client/src/pages/Create.js) 
+
+All machine learning scripts and scripts that do data manipulation can be found in the server directory. The most important file in the server directory is the [Server File](https://github.com/JakeTM9/AURA/blob/dev/server/server.py)
