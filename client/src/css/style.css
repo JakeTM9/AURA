@@ -5,8 +5,8 @@
 
 
 body {
-	background: #eee;
-	color: #333;
+	background: gray;
+	color: black;
 	font: normal 13px/1.625 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 50px;
@@ -14,8 +14,8 @@ body {
 }
 
 #container {
-	background: #fff;
-	border: 1px solid #ccc;
+	background: lightsteelblue;
+	border: 1px solid black;
 	-webkit-box-shadow: 0px 0px 12px rgba(0,0,0,.3);
 	-moz-box-shadow: 0px 0px 12px rgba(0,0,0,.3);
 	box-shadow: 0px 0px 12px rgba(0,0,0,.3);
@@ -26,7 +26,7 @@ body {
 }
 
 header {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid black;
 	font-size: 28px;
 	padding: 0 0 7px;
 }
@@ -106,16 +106,15 @@ header .h1 {
 }
 
 .thumbnails {
-	border: 1px solid #ddd;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
 	margin: 0 auto;
 	position: relative;
 	padding: 10px 45px;
-	width: 660px;
+	min-height: 480px;
+	min-width: 550px;
 }
 
 .thumbnails a {
-	color: #777;
 	float: left;
 	margin: 0 5px;
 	position: relative;
@@ -128,10 +127,12 @@ header .h1 {
 	display: block;
 	margin: 0 0 5px;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
+	border-color: black;
 }
 
 .thumbnails a:hover img {
-	border-color: #eee;
+	opacity: .6;
+	cursor: pointer;
 }
 
 .thumbnails a:active img {
@@ -144,16 +145,18 @@ header .h1 {
 }
 
 .thumbnails a span {
-	background: #eee;
+	background: #333;
+	color:#ddd;
 	-moz-border-radius: 22px; -webkit-border-radius: 22px; border-radius: 22px;
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 28px;
 	margin: 5px auto 0 auto;
 	padding: 2px 15px;
 }
 
 .thumbnails a:hover span {
-	background: #ddd;
+	opacity: .6;
+	cursor: pointer;
 }
 
 .thumbnails a:active span {

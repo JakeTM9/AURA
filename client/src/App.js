@@ -9,6 +9,7 @@ import {
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Analysis from "./pages/Analysis";
+import Save from "./pages/Save";
 
 function App() {
   const [analysisReviewData, setAnalysisReviewData] = useState('');
@@ -32,7 +33,8 @@ function App() {
           with exact path "/analysis", in 
           component props we passes the imported component*/}
           <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
-            
+          
+          <Route path="/save" element={<Save/>} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}

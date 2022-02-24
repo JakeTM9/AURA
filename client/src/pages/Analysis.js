@@ -86,7 +86,7 @@ const Analysis = ({reviewData, topicModelData}) => {
                             </a>
                     </div>
                     <div className="float-right">
-                            <a href="/analysis">
+                            <a href="/save">
                             <button className="bnCA ">Save Analysis</button>
                             </a>
                         </div>
