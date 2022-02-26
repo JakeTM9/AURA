@@ -1,6 +1,6 @@
 import time
 from flask import Flask, request, jsonify
-from scripts import scraper, topic_model
+from scripts import scraper, topic_model, saved_analyses
 
 app = Flask(__name__)
 
@@ -26,5 +26,7 @@ def get_topic_model_data():
 @app.route('/api/saveAnalysisData')
 def save_analysis_data():
     title = request.args['title']
-    print(title)
+    topic_model_data = request.args['topicModelData[]']
+    saved_analyses.add(title, topic_model_data)
+    
     return {} #dont need to return anything now: in the future we can return a fail in case of a duplicate name or smth

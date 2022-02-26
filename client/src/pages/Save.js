@@ -14,7 +14,8 @@ const Save = ({reviewData, topicModelData}) => {
     const transferValue = (event) => {
         event.preventDefault();
         const data = {
-            title
+            title,
+            topicModelData
         }
         setSaveDisabled(true);
         saveAnalysisData(data);
@@ -24,10 +25,6 @@ const Save = ({reviewData, topicModelData}) => {
     const clearState = () => {
         set_title('');
     };
-
-    useEffect(() => {
-        console.log(topicModelData);
-      });
 
     const Navigate = useNavigate();
     const goToHome = event => Navigate('/home', {replace:true});
