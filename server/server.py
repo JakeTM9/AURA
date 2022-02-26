@@ -22,3 +22,9 @@ def get_review_data():
 def get_topic_model_data():
     items = topic_model.run_topic_model()
     return jsonify(items)
+
+@app.route('/api/saveAnalysisData')
+def save_analysis_data():
+    title = request.args['title']
+    print(title)
+    return {} #dont need to return anything now: in the future we can return a fail in case of a duplicate name or smth
