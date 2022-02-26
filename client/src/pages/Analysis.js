@@ -3,15 +3,22 @@ import '../css/style.css';
 import Home from "./Home";
 import Create from "./Create";
 import * as d3 from 'd3';
+import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
 const Analysis = ({reviewData, topicModelData}) => {
     const [topicModelDataDisplay, setTopicModelDataDisplay] = useState('');
     useEffect(() => {
         if(topicModelData !== ""){
-            console.log(topicModelData);
             setTopicModelDataDisplay(topicModelData)
         }
       }, [topicModelData]);
+
+    const Navigate = useNavigate();
+    const goToSave = event => Navigate('/save', {replace:true});
+    const saveAnalysis = (event) => {
+        event.preventDefault();
+        goToSave();
+    }
     
     useEffect(() => {
         let valuesTopicZero = topicModelData[0].filter(function(el){
@@ -87,7 +94,7 @@ const Analysis = ({reviewData, topicModelData}) => {
                     </div>
                     <div className="float-right">
                             <a href="/save">
-                            <button className="bnCA ">Save Analysis</button>
+                            <button className="bnCA " onClick ={saveAnalysis}>Save Analysis</button>
                             </a>
                         </div>
                 </header>

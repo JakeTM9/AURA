@@ -3,7 +3,12 @@ import '../css/style.css';
 import Create from "./Create";
 import Analysis from "./Analysis";
 
-const Save = () => {
+const Save = ({reviewData, topicModelData}) => {
+
+    useEffect(() => {
+        console.log(topicModelData);
+      });
+    
     return (
         <div>
             <div id="container">

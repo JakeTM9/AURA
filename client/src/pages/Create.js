@@ -66,7 +66,6 @@ const Create = ({updateReviewData, updateTopicModelData}) => {
 
     useEffect(() => {
         if(reviewData !== ""){
-            console.log(reviewData);
             updateReviewData(reviewData);
             getTopicModelData();
         }
@@ -74,7 +73,6 @@ const Create = ({updateReviewData, updateTopicModelData}) => {
     
     useEffect(() => {
         if(topicModelData !== ""){
-            console.log(topicModelData);
             updateTopicModelData(topicModelData);
             goToAnalysis();
         }

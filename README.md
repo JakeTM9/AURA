@@ -49,7 +49,6 @@ All front end files can be found in the client directory. The client makes async
 All machine learning scripts and scripts that do data manipulation can be found in the server directory. The most important file in the server directory is the [Server File](https://github.com/JakeTM9/AURA/blob/dev/server/server.py)
 
 ## TODO:
-- Pass necessary data from analysis page to save page
 - Populate Save page with title field and save button and back button
 - pass data from save page + title data to system detailed below, then navigate to home
 - Save Analysis Data as an entry to a Single Big .json (Make a system in flask to create, read, and delete entries in Json)

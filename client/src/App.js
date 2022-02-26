@@ -34,7 +34,7 @@ function App() {
           component props we passes the imported component*/}
           <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
           
-          <Route path="/save" element={<Save/>} />
+          <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}
