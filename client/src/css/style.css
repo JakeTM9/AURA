@@ -240,3 +240,46 @@ margin: 50px;
 background-color: #333; /* Have each bar be a nice green */
 width: 10px; /* The animation will start with each bar being 10px wide, and then expand outwards */
 }
+
+/* Axes */
+.axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+  }
+  .axis text {
+	font-size: 13px;
+	fill: black;
+  }
+  .axis-title {
+	font-size: 13px;
+	fill: #888;
+  }
+  .x-axis .domain {
+	stroke: black;
+  }
+  .y-axis .domain {
+	display: none;
+  }
+  
+  .chart-area {
+	fill: #e9eff5;
+  }
+
+/* Bar */ 
+.chart-bar {
+	fill: #333;
+	shape-rendering: crispEdges;
+  }
+
+/*for columns-----------------------------------------*/
+.column {
+	float: left;
+	width: 50%;
+  }
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
