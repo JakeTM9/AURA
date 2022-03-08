@@ -50,7 +50,7 @@ const Analysis = ({reviewData, topicModelData, staticData}) => {
                         <h3 class="information">{staticData.avgWordCount}</h3>
                             <h3>Average Character Count: </h3>
                         <h3 class="information">{staticData.avgLengthChar}</h3>
-                            <h3>Top Rated Review: </h3>
+                            <h3>Most Liked Review: </h3>
                         <h3 class="information">{staticData.topReview}</h3>
                     </div>
                     <div class = "column">

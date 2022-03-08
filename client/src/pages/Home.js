@@ -2,8 +2,33 @@ import React, { useState, useEffect } from 'react';
 import '../css/style.css';
 import Create from "./Create";
 import Analysis from "./Analysis";
+import Card from "../components/Card"
+import axios from 'axios';
 
 const Home = () => {
+    const [showWarning, setShowWarning] = useState(true);
+    const [cards, setCards] = useState([])
+
+    async function getAnalysisCards() {
+        let res = await axios.get("/api/getAnalysisCards", {
+        })
+        .then((res) => setCards(res.data))
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
+    useEffect(() => {
+        getAnalysisCards();
+    }, []);
+
+    useEffect(() => {
+        if(cards.length !== 0){
+            setShowWarning(false)
+            console.log(cards)
+        }
+    }, [cards]);
+
     return (
         <div>
             <div id="container">
@@ -17,28 +42,15 @@ const Home = () => {
                         </div>
                     </div>
                 </header>
-                <section>
+                <div class={showWarning ? "" : "hide"}>
                     <br></br>
                     <h3>Uh oh!... looks like you have no saved analysis. Why don't you create one?</h3>
-                </section>
+                </div>
                 <div class="thumbnails">
                     <div class="group">
-                        <a href="#" title="7111">
-                            <img src="images/all.jpg" alt="7111-m" width="290" height="242" />
-                            <span>Analysis Title 1</span>
-                        </a>
-                        <a href="#" title="7112">
-                            <img src="images/all.jpg" alt="7111-m" width="290" height="242" />
-                            <span>Analysis Title 2</span>
-                        </a>
-                        <a href="#" title="7118">
-                            <img src="images/all.jpg" alt="7111-m" width="290" height="242" />
-                            <span>Analysis Title 3</span>
-                        </a>
-                        <a href="#" title="7124">
-                            <img src="images/all.jpg" alt="7111-m" width="290" height="242" />
-                            <span>Analysis Title 4</span>
-                        </a>
+                        {cards.map((card) => (
+                        <Card key = {card.title} card={card}/>
+                        ))}
                     </div>
 		        </div>
             </div>

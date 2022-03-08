@@ -26,7 +26,12 @@ def get_topic_model_data():
 @app.route('/api/getStaticData')
 def get_static_data():
     items = static_analysis.main()
-    
+    return items
+
+@app.route('/api/getAnalysisCards')
+def get_anlysis_cards():
+    items = saved_analyses.getAnalysisCards()
+    print(items)
     return items
 
 @app.route('/api/saveAnalysisData')

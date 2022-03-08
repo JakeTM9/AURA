@@ -183,16 +183,6 @@ header .h1 {
 	width: 24px;
 }
 
-.previous {
-	background: url(../images/previous.png) no-repeat 0 0;
-	left: 10px;
-}
-
-.next {
-	background: url(../images/next.png) no-repeat 0 0;
-	right: 10px;
-}
-
 .previous:hover, .next:hover {
 	opacity: .6;
 }
@@ -287,3 +277,8 @@ width: 10px; /* The animation will start with each bar being 10px wide, and then
 	display: table;
 	clear: both;
   }
+
+
+.hide {
+	display: none;
+}
