@@ -6,13 +6,14 @@ import TopicChart from "../charts/TopicChart";
 import * as d3 from 'd3';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
-const Analysis = ({reviewData, topicModelData}) => {
-    const [topicModelDataDisplay, setTopicModelDataDisplay] = useState('');
+const Analysis = ({reviewData, topicModelData, staticData}) => {
     useEffect(() => {
-        if(topicModelData !== ""){
-            setTopicModelDataDisplay(topicModelData)
+        if(staticData !== ""){
+            console.log(staticData);
         }
-      }, [topicModelData]);
+      }, [staticData]);
+    
+    
 
     const Navigate = useNavigate();
     const goToSave = event => Navigate('/save', {replace:true});
@@ -38,7 +39,29 @@ const Analysis = ({reviewData, topicModelData}) => {
                         </div>
                 </header>
                 <br></br>
-                
+                <div class = "row">
+                    <h1>General Information</h1>
+                    <div class = "column" >
+                            <h3>Review Count:</h3>
+                        <h3 class="information">{staticData.ReviewCount}</h3>
+                            <h3>Average Score: </h3>
+                        <h3 class="information">{staticData.AvgScore}</h3>
+                            <h3>Average Word Count: </h3>
+                        <h3 class="information">{staticData.avgWordCount}</h3>
+                            <h3>Average Character Count: </h3>
+                        <h3 class="information">{staticData.avgLengthChar}</h3>
+                            <h3>Top Rated Review: </h3>
+                        <h3 class="information">{staticData.topReview}</h3>
+                    </div>
+                    <div class = "column">
+                        <h2>Top 50 Words: </h2>
+                    </div>
+                    
+                </div>
+
+                <div class = "row">
+                    <h1>Topic Analysis</h1>
+                </div>
                 <div class = "row">
                     <div class="column">
                         <TopicChart

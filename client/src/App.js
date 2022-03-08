@@ -14,6 +14,7 @@ import Save from "./pages/Save";
 function App() {
   const [analysisReviewData, setAnalysisReviewData] = useState('');
   const [analysisTopicModelData, setAnalysisTopicModelData] = useState('');
+  const [analysisStaticData, setAnalysisStaticData] = useState('');
   return (
     <>
       {/* This is the alias of BrowserRouter i.e. Router */}
@@ -27,12 +28,12 @@ function App() {
           {/* This route is for about component 
           with exact path "/create", in component 
           props we passes the imported component*/}
-          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelData = {setAnalysisTopicModelData}/>} />
+          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelData = {setAnalysisTopicModelData} updateStaticData = {setAnalysisStaticData}/>} />
             
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
-          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
+          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData} staticData= {analysisStaticData}/>} />
           
           <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
           {/* If any route mismatches the upper 

@@ -1,6 +1,6 @@
 import time
 from flask import Flask, request, jsonify
-from scripts import scraper, topic_model, saved_analyses
+from scripts import scraper, topic_model, saved_analyses, static_analysis
 
 app = Flask(__name__)
 
@@ -22,6 +22,12 @@ def get_review_data():
 def get_topic_model_data():
     items = topic_model.run_topic_model()
     return jsonify(items)
+
+@app.route('/api/getStaticData')
+def get_static_data():
+    items = static_analysis.main()
+    
+    return items
 
 @app.route('/api/saveAnalysisData')
 def save_analysis_data():

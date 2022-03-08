@@ -13,6 +13,10 @@ body {
 	text-align: center;
 }
 
+.information {
+	color: #333
+}
+
 #container {
 	background: lightsteelblue;
 	border: 1px solid black;
