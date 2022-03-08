@@ -1,3 +1,5 @@
+# Code from topic modelling homework
+# TODO:
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,21 +11,25 @@ from wordcloud import WordCloud
 
 
 # Add display topics
-def display_topics(model, features, no_top_words=5):
+def display_topics(model, features, no_top_words=50):
     for topic, word_vector in enumerate(model.components_):
         total = word_vector.sum()
         largest = word_vector.argsort()[::-1]
         print("\nTopic %02d" % topic)
+        if no_top_words > len(features):
+            no_top_words = len(features)
         for i in range(0, no_top_words):
             print(" %s (%2.2f)" % (features[largest[i]], word_vector[largest[i]]*100.0/total))
 
-def toArray_topics(model, features, no_top_words=5):
+def toArray_topics(model, features, no_top_words=50):
     arr = [[] for topic, word_vector in enumerate(model.components_)]
     index = 0
     for topic, word_vector in enumerate(model.components_):
         total = word_vector.sum()
         largest = word_vector.argsort()[::-1]
         arr_item = []
+        if no_top_words > len(features):
+            no_top_words = len(features)
         for i in range(0, no_top_words):
             arr_item.append(features[largest[i]])
             arr_item.append(word_vector[largest[i]]*100.0/total)
@@ -32,10 +38,13 @@ def toArray_topics(model, features, no_top_words=5):
     return arr
 
 
-def wordcloud_topics(model, features, no_top_words=40):
+def wordcloud_topics(model, features, no_top_words=50):
     for topic, words in enumerate(model.components_):
         size = {}
         largest = words.argsort()[::-1] # invert sort order
+        if no_top_words > len(features):
+            no_top_words = len(features)
+        
         for i in range(0, no_top_words):
             size[features[largest[i]]] = abs(words[largest[i]])
         wc = WordCloud(background_color="white", max_words=100, width=960, height=540)
@@ -61,3 +70,7 @@ def run_topic_model():
 
     items = toArray_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
     return items
+
+
+
+#wordcloud_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
