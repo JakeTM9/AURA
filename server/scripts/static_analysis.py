@@ -1,14 +1,13 @@
 import json
 import pandas as pd
 import numpy as np
+import os
 
 # This script will generate data for some static analysis point and return them in a json object
 # Included analyses: Total reviews, average review score,average score by version,
 # average review length, top reviews by user thumbs ups
 
 # May be returning truncated version of top review
-
-dataFile = "..\\review_data\\reviews.csv"
 
 
 def numReviews(reviews):
@@ -56,7 +55,9 @@ def getTopReview(reviews):
 # Return JSON object
 def main():
     # read csv in using pandas so the dataframe may be passed around
-    reviews = pd.read_csv(dataFile)
+    uploads_dir = os.path.join(os.getcwd(), 'review_data')
+    finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
+    reviews = pd.read_csv(finalPath)
 
     reviewCount = numReviews(reviews)
     avgReviewScore = avgScore(reviews)

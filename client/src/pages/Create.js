@@ -5,12 +5,13 @@ import Analysis from "./Analysis";
 import axios from 'axios';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
-const Create = ({updateReviewData, updateTopicModelData}) => {
+const Create = ({updateReviewData, updateTopicModelData, updateStaticData}) => {
     const [google_play_id, set_google_play_id] = useState('');
     const [number_reviews, set_number_reviews] = useState('');
     const [file_name, set_file_name] = useState('');
     const [reviewData, setReviewData] = useState('');
     const [topicModelData, setTopicModelData] = useState('');
+    const [staticData, setStaticData] = useState('');
     const [createDisabled, setCreateDisabled] = useState(false);
 
     const change_google_play_id = (event) => {
@@ -60,6 +61,14 @@ const Create = ({updateReviewData, updateTopicModelData}) => {
             console.log(error);
         });
     }
+
+    async function getStaticData() {
+        let res = await axios.get("/api/getStaticData")
+        .then((res) => setStaticData(res.data))
+        .catch((error) => {
+            console.log(error);
+        });
+    }
     
     const Navigate = useNavigate();
     const goToAnalysis = event => Navigate('/analysis', {replace:true});
@@ -74,9 +83,17 @@ const Create = ({updateReviewData, updateTopicModelData}) => {
     useEffect(() => {
         if(topicModelData !== ""){
             updateTopicModelData(topicModelData);
-            goToAnalysis();
+            getStaticData();
+            
         }
     }, [topicModelData]);
+
+    useEffect(() => {
+        if(staticData !== ""){
+            updateStaticData(staticData);
+            goToAnalysis();
+        }
+    }, [staticData]);
 
     return (
         <div>
