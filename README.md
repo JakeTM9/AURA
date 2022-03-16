@@ -49,10 +49,7 @@ All front end files can be found in the client directory. The client makes async
 All machine learning scripts and scripts that do data manipulation can be found in the server directory. The most important file in the server directory is the [Server File](https://github.com/JakeTM9/AURA/blob/dev/server/server.py)
 
 ## TODO:
-- pass data from save page + title data to system detailed below, then navigate to home
-- Save Analysis Data as an entry to a Single Big .json (Make a system in flask to create, read, and delete entries in Json)
-- Populate Home page with all entries from Big .json -> alphabetized?
-- Improve Bar Graph
-- Make word cloud work (fix bug)
-- Get top 50 words
-- Make word cloud of top 50 words
+- Use Selects for multiple graphs/clouds
+- Make word cloud work 
+- Display whole actual top reviews
+- Sentiment Analysis of Review groupings
