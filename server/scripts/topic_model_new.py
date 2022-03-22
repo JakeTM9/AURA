@@ -49,9 +49,8 @@ def wordcloud_topics(model, features, no_top_words=50):
             size[features[largest[i]]] = abs(words[largest[i]])
         wc = WordCloud(background_color="white", max_words=100, width=960, height=540)
         wc.generate_from_frequencies(size)
-        plt.imshow(wc, interpolation='bilinear')
-        plt.axis("off")
-        plt.show()
+        filename = "img/wordcloud_{}.png".format(topic)
+        wc.to_file(filename)
 
 def run_topic_model():
     ##This is some nonsense that we can make better later
@@ -69,8 +68,5 @@ def run_topic_model():
     nmf_model.fit_transform(tfidf_text_vectors)
 
     items = toArray_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
+    wordcloud_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
     return items
-
-
-
-#wordcloud_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
