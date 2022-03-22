@@ -9,17 +9,25 @@ import {BrowserRouter as Router,useNavigate} from "react-router-dom";
 const Analysis = ({reviewData, topicModelData, staticData}) => {
     useEffect(() => {
         if(staticData !== ""){
-            console.log(staticData);
+            console.log(staticData); //ToDO
         }
-      }, [staticData]);
-    
-    
+    }, [staticData]);
 
+    const [selectValue, setSelectValue] = useState(0);
+    
+      console.log(topicModelData[0][0]);
+    
     const Navigate = useNavigate();
     const goToSave = event => Navigate('/save', {replace:true});
     const saveAnalysis = (event) => {
         event.preventDefault();
         goToSave();
+    }
+
+    function handleChange(e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        setSelectValue(e.target.value);
     }
     
     return (
@@ -39,98 +47,52 @@ const Analysis = ({reviewData, topicModelData, staticData}) => {
                         </div>
                 </header>
                 <br></br>
-                <div class = "row">
+                <div className = "row">
                     <h1>General Information</h1>
-                    <div class = "column" >
+                    <div className = "column" >
                             <h3>Review Count:</h3>
-                        <h3 class="information">{staticData.ReviewCount}</h3>
+                        <h3 className="information">{staticData.ReviewCount}</h3>
                             <h3>Average Score: </h3>
-                        <h3 class="information">{staticData.AvgScore}</h3>
+                        <h3 className="information">{staticData.AvgScore}</h3>
                             <h3>Average Word Count: </h3>
-                        <h3 class="information">{staticData.avgWordCount}</h3>
+                        <h3 className="information">{staticData.avgWordCount}</h3>
                             <h3>Average Character Count: </h3>
-                        <h3 class="information">{staticData.avgLengthChar}</h3>
+                        <h3 className="information">{staticData.avgLengthChar}</h3>
                             <h3>Most Liked Review: </h3>
-                        <h3 class="information">{staticData.topReview}</h3>
+                        <h3 className="information">{staticData.topReview}</h3>
                     </div>
-                    <div class = "column">
+                    <div className = "column">
                         <h2>Top 50 Words: </h2>
                     </div>
                     
                 </div>
 
-                <div class = "row">
+                <div className = "row">
                     <h1>Topic Analysis</h1>
                 </div>
-                <div class = "row">
-                    <div class="column">
-                        <TopicChart
-                        words={topicModelData[0].filter(function(el){
-                            if(isNaN(el)){
-                                return el;
-                            }})}
-                        counts={topicModelData[0].filter(function(el){
-                            if(!isNaN(el)){
-                                return el.toFixed(2);
-                            }})}
-                        id={"0"}
-                            >
-                        </TopicChart>
+                <div className = "row">
+                    <div className="column">
+                        <h3>Please Select a Topic:</h3>
+                        <select value={selectValue} id="topic:" onChange = {(e) => handleChange(e)}>
+                            <option value= "0">{topicModelData[0][0]}</option>
+                            <option value= "1">{topicModelData[1][0]}</option>
+                            <option value= "2">{topicModelData[2][0]}</option>
+                            <option value= "3">{topicModelData[3][0]}</option>
+                            <option value= "4">{topicModelData[4][0]}</option>
+                        </select>
+                        <TopicChart selectValue={+selectValue} topicModelData={topicModelData} id={"0"}> </TopicChart>
                         <br></br>
-                        <TopicChart
-                            words={topicModelData[1].filter(function(el){
-                                if(isNaN(el)){
-                                    return el;
-                                }})}
-                            counts={topicModelData[1].filter(function(el){
-                                if(!isNaN(el)){
-                                    return el.toFixed(2);
-                                }})}
-                            id={"1"}
-                                >
-                        </TopicChart>
+                        
                     </div>
-                    <div class="column">
-                        <TopicChart
-                            words={topicModelData[2].filter(function(el){
-                                if(isNaN(el)){
-                                    return el;
-                                }})}
-                            counts={topicModelData[2].filter(function(el){
-                                if(!isNaN(el)){
-                                    return el.toFixed(2);
-                                }})}
-                            id={"2"}
-                                >
-                        </TopicChart>
+                    
+                    <div className="column">
+                        
                         <br></br>
-                        <TopicChart
-                            words={topicModelData[3].filter(function(el){
-                                if(isNaN(el)){
-                                    return el;
-                                }})}
-                            counts={topicModelData[3].filter(function(el){
-                                if(!isNaN(el)){
-                                    return el.toFixed(2);
-                                }})}
-                            id={"3"}
-                                >
-                        </TopicChart>
+                        
                     </div>
                 </div>
                 <br></br>
-                <TopicChart
-                    words={topicModelData[4].filter(function(el){
-                        if(isNaN(el)){
-                            return el;
-                        }})}
-                    counts={topicModelData[4].filter(function(el){
-                        if(!isNaN(el)){
-                            return el.toFixed(2);
-                        }})}
-                    id={"4"}
-                        >
-                </TopicChart>
+                
             </div>
         </div>
     );
