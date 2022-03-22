@@ -1,6 +1,6 @@
 import time
 from flask import Flask, request, jsonify
-from scripts import scraper, topic_model, saved_analyses, static_analysis
+from scripts import scraper, topic_model, saved_analyses, static_analysis, sentiment_analysis
 
 app = Flask(__name__)
 
@@ -16,11 +16,19 @@ def get_review_data():
     file_name = request.args['file_name']
     data = scraper.scrapeAndSave(google_play_id, number_reviews)
     #items = topic_model.run_topic_model()
+    ##run sentiment analysis
+    sentiment_analysis.run()
     return jsonify(data[0])
 
-@app.route('/api/getTopicModelData')
-def get_topic_model_data():
-    items = topic_model.run_topic_model()
+##gonna split nega and positive
+@app.route('/api/getTopicModelDataPositive')
+def get_topic_model_data_positive():
+    items = topic_model.run_topic_model_positive()
+    return jsonify(items)
+
+@app.route('/api/getTopicModelDataNegative')
+def get_topic_model_data_negative():
+    items = topic_model.run_topic_model_negative()
     return jsonify(items)
 
 @app.route('/api/getStaticData')

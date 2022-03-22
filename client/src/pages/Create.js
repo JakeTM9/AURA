@@ -5,12 +5,13 @@ import Analysis from "./Analysis";
 import axios from 'axios';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
-const Create = ({updateReviewData, updateTopicModelData, updateStaticData}) => {
+const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicModelDataNegative, updateStaticData}) => {
     const [google_play_id, set_google_play_id] = useState('');
     const [number_reviews, set_number_reviews] = useState('');
     const [file_name, set_file_name] = useState('');
     const [reviewData, setReviewData] = useState('');
-    const [topicModelData, setTopicModelData] = useState('');
+    const [topicModelDataPositive, setTopicModelDataPositive] = useState('');
+    const [topicModelDataNegative, setTopicModelDataNegative] = useState('');
     const [staticData, setStaticData] = useState('');
     const [createDisabled, setCreateDisabled] = useState(false);
 
@@ -54,9 +55,17 @@ const Create = ({updateReviewData, updateTopicModelData, updateStaticData}) => {
         });
     }
 
-    async function getTopicModelData() {
-        let res = await axios.get("/api/getTopicModelData")
-        .then((res) => setTopicModelData(res.data))
+    async function getTopicModelDataPositive() {
+        let res = await axios.get("/api/getTopicModelDataPositive")
+        .then((res) => setTopicModelDataPositive(res.data))
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
+    async function getTopicModelDataNegative() {
+        let res = await axios.get("/api/getTopicModelDataNegative")
+        .then((res) => setTopicModelDataNegative(res.data))
         .catch((error) => {
             console.log(error);
         });
@@ -76,17 +85,25 @@ const Create = ({updateReviewData, updateTopicModelData, updateStaticData}) => {
     useEffect(() => {
         if(reviewData !== ""){
             updateReviewData(reviewData);
-            getTopicModelData();
+            getTopicModelDataPositive();
+           
         }
       }, [reviewData]);
     
     useEffect(() => {
-        if(topicModelData !== ""){
-            updateTopicModelData(topicModelData);
-            getStaticData();
+        if(topicModelDataPositive !== ""){
+            updateTopicModelDataPositive(topicModelDataPositive);
+            getTopicModelDataNegative();
             
         }
-    }, [topicModelData]);
+    }, [topicModelDataPositive]);
+
+    useEffect(() => {
+        if(topicModelDataNegative !== ""){
+            updateTopicModelDataNegative(topicModelDataNegative);
+            getStaticData();
+        }
+    }, [topicModelDataNegative]);
 
     useEffect(() => {
         if(staticData !== ""){

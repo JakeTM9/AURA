@@ -44,10 +44,29 @@ def wordcloud_topics(model, features, no_top_words=40):
         plt.axis("off")
         plt.show()
 
-def run_topic_model():
+def run_topic_model_positive():
     ##This is some nonsense that we can make better later
     uploads_dir = os.path.join(os.getcwd(), 'review_data')
-    finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
+    finalPath = os.path.join(uploads_dir, 'reviews_positive' + '.csv')
+    df = pd.read_csv(finalPath)
+
+    #print(df.head())
+
+    tfidf_text_vectorizer = TfidfVectorizer(stop_words=stopwords, min_df=5, max_df=0.7)
+    tfidf_text_vectors = tfidf_text_vectorizer.fit_transform(df['content'])
+    #print(tfidf_text_vectors.shape)
+
+    nmf_model = NMF(n_components=6)
+    nmf_model.fit_transform(tfidf_text_vectors)
+
+    items = toArray_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
+    return items
+
+def run_topic_model_negative():
+    ##This is some nonsense that we can make better later
+    
+    uploads_dir = os.path.join(os.getcwd(), 'review_data')
+    finalPath = os.path.join(uploads_dir, 'reviews_negative' + '.csv')
     df = pd.read_csv(finalPath)
 
     #print(df.head())

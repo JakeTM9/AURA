@@ -13,7 +13,8 @@ import Save from "./pages/Save";
 
 function App() {
   const [analysisReviewData, setAnalysisReviewData] = useState('');
-  const [analysisTopicModelData, setAnalysisTopicModelData] = useState('');
+  const [analysisTopicModelDataPositive, setAnalysisTopicModelDataPositive] = useState('');
+  const [analysisTopicModelDataNegative, setAnalysisTopicModelDataNegative] = useState('');
   const [analysisStaticData, setAnalysisStaticData] = useState('');
   return (
     <>
@@ -28,14 +29,14 @@ function App() {
           {/* This route is for about component 
           with exact path "/create", in component 
           props we passes the imported component*/}
-          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelData = {setAnalysisTopicModelData} updateStaticData = {setAnalysisStaticData}/>} />
+          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelDataPositive = {setAnalysisTopicModelDataPositive} updateTopicModelDataNegative = {setAnalysisTopicModelDataNegative} updateStaticData = {setAnalysisStaticData}/>} />
             
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
-          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelData={analysisTopicModelData} staticData= {analysisStaticData}/>} />
+          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelDataPositive = {analysisTopicModelDataPositive} topicModelDataNegative = {analysisTopicModelDataNegative} staticData= {analysisStaticData}/>} />
           
-          <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelData}/>} />
+          <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelDataPositive}/>} />{/*fix saving pos/neg later*/}
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}

@@ -37,7 +37,7 @@ const TopicChart = (props) => {
 
             let Title = words.shift();
 
-            document.getElementById("titleElement").innerText = "Topic: " + Title;
+            document.getElementById("titleElement" + props.id).innerText = "Topic: " + Title;
             let Words = words;
             
             let yScale = d3.scaleBand()
@@ -57,7 +57,7 @@ const TopicChart = (props) => {
             
 
             // Define size of SVG drawing area
-            let svg = d3.select(document.getElementById("#Barchart"))
+            let svg = d3.select(document.getElementById("#Barchart" + props.id))
             .attr('width', containerWidth)
             .attr('height', containerHeight);
             
@@ -143,8 +143,8 @@ const TopicChart = (props) => {
 
     return (
         <div>
-            <h2 id={"titleElement"}></h2>
-            <svg id={"#Barchart"}></svg>
+            <h2 id={"titleElement" + props.id}></h2>
+            <svg id={"#Barchart" + props.id}></svg>
         </div>
         
     );
