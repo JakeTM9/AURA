@@ -48,6 +48,7 @@ def avgReviewLength(reviews):
 
 def getTopReview(reviews):
     # find row with max thumbsUpCount, access content column in that row, convert to a string for printing
+    pd.set_option("display.max_colwidth", 10000) ## fix for truncated review
     review = reviews[reviews.thumbsUpCount == reviews.thumbsUpCount.max()].content.to_string(index=False)
     return review
 
