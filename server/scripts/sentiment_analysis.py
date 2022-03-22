@@ -1,6 +1,7 @@
 import nltk
 import os
 import pandas as pd
+pd.set_option("display.max_colwidth", 10000) ## fix for truncated review
 
 nltk.downloader.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
@@ -11,11 +12,23 @@ if result["pos"] > result["neg"]:
 
 #uploads_dir = os.path.join(os.getcwd(), 'review_data')
 uploads_dir = os.path.join(os.getcwd(), '../review_data') ##for non-webapp use
-finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
-reviews = pd.read_csv(finalPath)
+reviewPath = os.path.join(uploads_dir, 'reviews' + '.csv')
+posReviewPath = os.path.join(uploads_dir, 'reviews_positive' + '.csv')
+negReviewPath = os.path.join(uploads_dir, 'reviews_negative' + '.csv')
+#dataframes
+reviews = pd.read_csv(reviewPath)
+posReviews = pd.read_csv(posReviewPath)
+negReviews = pd.read_csv(negReviewPath)
+##kill old contents
+posReviews = posReviews[0:0]
+negReviews = negReviews[0:0]
 
-for i in reviews.itertuples():
-    result = sia.polarity_scores(i.content)
+for index,row in reviews.iterrows():
+    result = sia.polarity_scores(row.content)
     if result["pos"] > result["neg"]:
-        print(i.content)
+        posReviews = posReviews.append(row, ignore_index = True)
+        posReviews.to_csv(posReviewPath, index=False)
+    else:
+        negReviews = negReviews.append(row, ignore_index = True)
+        negReviews.to_csv(negReviewPath, index=False)
     
