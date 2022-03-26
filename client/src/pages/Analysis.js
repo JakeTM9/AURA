@@ -51,22 +51,23 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                         </div>
                 </header>
                 <br></br>
+                <div className = "textInfo">
+                            <h3 className="information"><span className="bigger">{staticData.ReviewCount}</span> reviews processed with an average score of <span className="bigger">{staticData.AvgScore.toFixed(2)}/5</span></h3>
+                            <h3 className="information"> </h3>
+                                
+                            <h3 className="information"> On average, reviews contained <span className="bigger">{staticData.avgWordCount.toFixed(2)}</span> words</h3>
+                            
+                            <h3> <span className="bigger green">{staticData.PositiveReviewCount}</span> reviews were classified as positive, while <span className="bigger red">{staticData.NegativeReviewCount}</span> were classified as negative</h3>
+                            <h5  className="information"> (Using NLTK's sentiment analysis model, vader)</h5>
+                            <br></br>
+                </div>
                 <div className = "row">
-                    <h1>General Information</h1>
+                    
                     <div className = "column" >
-                            <h3>Review Count:</h3>
-                        <h3 className="information">{staticData.ReviewCount}</h3>
-                            <h3>Average Score: </h3>
-                        <h3 className="information">{staticData.AvgScore}</h3>
-                            <h3>Average Word Count: </h3>
-                        <h3 className="information">{staticData.avgWordCount}</h3>
-                            <h3>Average Character Count: </h3>
-                        <h3 className="information">{staticData.avgLengthChar}</h3>
-                            <h3>Most Liked Review: </h3>
-                        <h3 className="information">{staticData.topReview}</h3>
+                        
                     </div>
                     <div className = "column">
-                        <h2>Top 50 Words: </h2>
+                        
                     </div>
                     
                 </div>

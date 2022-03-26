@@ -43,6 +43,20 @@ header .h1 {
 	padding: 2px 5px;
 	text-transform: uppercase;
 }
+
+/*Analysis text stuff */
+.textInfo {
+	background: ghostwhite;
+	border: 1px solid black;
+	max-width: 625px;
+	margin:auto;
+}
+.bigger { font-size:200%; }
+.green {color:green}
+.red {color:red}
+
+
+
 .bnCA {
 	color: #ddd;
 	background-color: #333;

@@ -60,7 +60,16 @@ def main():
     finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
     reviews = pd.read_csv(finalPath)
 
+    posPath = os.path.join(uploads_dir, 'reviews_positive' + '.csv')
+    posReviews = pd.read_csv(posPath)
+
+    negPath = os.path.join(uploads_dir, 'reviews_negative' + '.csv')
+    negReviews = pd.read_csv(negPath)
+
     reviewCount = numReviews(reviews)
+    posReviewCount = numReviews(posReviews)
+    negReviewCount = numReviews(negReviews)
+
     avgReviewScore = avgScore(reviews)
     topReview = getTopReview(reviews)
     avgLength, avgWordCount = avgReviewLength(reviews)
@@ -76,7 +85,9 @@ def main():
         "AvgScore": avgReviewScore,
         "avgLengthChar": avgLength,
         "avgWordCount": avgWordCount,
-        "topReview": topReview
+        "topReview": topReview,
+        "PositiveReviewCount" : posReviewCount,
+        "NegativeReviewCount" : negReviewCount
     }
     # print(json.dumps(staticAnalysisData))
     return json.dumps(staticAnalysisData)
