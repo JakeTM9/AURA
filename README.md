@@ -14,7 +14,7 @@ TODO: add more of a description
 ## Requirements
 
 - [Node.js](https://nodejs.org/en/download/) (tested with v16.13.1 on Windows 10)
-- [Python 3.8.X](https://www.python.org/downloads/) (any version of 3.8 will do)
+- [Python 3.8.10](https://www.python.org/downloads/release/python-3810/) (tested with 3.8.10, **does not work on 3.8.0)
 
 
 ## To Install
@@ -31,7 +31,7 @@ In Terminal #1 (from root directory):
 
     cd server
     python -m venv venv
-    ./venv/scripts/activate
+    ./venv/scripts/activate (or .\venv\scripts\activate)
     pip install -r requirements.txt
     flask run
 
@@ -48,8 +48,3 @@ All front end files can be found in the client directory. The client makes async
 
 All machine learning scripts and scripts that do data manipulation can be found in the server directory. The most important file in the server directory is the [Server File](https://github.com/JakeTM9/AURA/blob/dev/server/server.py)
 
-## TODO:
-- Use Selects for multiple graphs/clouds
-- Make word cloud work 
-- Display whole actual top reviews
-- Sentiment Analysis of Review groupings
