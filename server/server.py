@@ -1,5 +1,5 @@
-import time
-from flask import Flask, request, jsonify
+import time, os
+from flask import Flask, request, jsonify, send_from_directory
 from scripts import scraper, topic_model, saved_analyses, static_analysis, sentiment_analysis
 
 app = Flask(__name__)
@@ -49,3 +49,8 @@ def save_analysis_data():
     saved_analyses.add(title, topic_model_data)
     
     return {} #dont need to return anything now: in the future we can return a fail in case of a duplicate name or smth
+
+image_dir = os.path.join(os.getcwd(), 'img')
+@app.route('/api/getImage/<path:path>')
+def static_dir(path):
+    return send_from_directory(image_dir, path)

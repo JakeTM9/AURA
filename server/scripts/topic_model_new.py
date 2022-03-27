@@ -49,12 +49,15 @@ def wordcloud_topics(model, features, no_top_words=50):
             size[features[largest[i]]] = abs(words[largest[i]])
         wc = WordCloud(background_color="white", max_words=100, width=960, height=540)
         wc.generate_from_frequencies(size)
-        filename = "img/wordcloud_{}.png".format(topic)
+        #filename = "img/wordcloud_{}.png".format(topic)
+        filename = "../img/wordcloud_{}.png".format(topic)
         wc.to_file(filename)
 
 def run_topic_model():
     ##This is some nonsense that we can make better later
-    uploads_dir = os.path.join(os.getcwd(), 'review_data')
+    #uploads_dir = os.path.join(os.getcwd(), 'review_data')
+    ##temp
+    uploads_dir = os.path.join(os.getcwd(), '../review_data')
     finalPath = os.path.join(uploads_dir, 'reviews' + '.csv')
     df = pd.read_csv(finalPath)
 
@@ -70,3 +73,6 @@ def run_topic_model():
     items = toArray_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
     wordcloud_topics(nmf_model, tfidf_text_vectorizer.get_feature_names())
     return items
+
+toPrint = run_topic_model()
+print(toPrint)
