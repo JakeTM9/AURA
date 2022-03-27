@@ -5,7 +5,7 @@ import Analysis from "./Analysis";
 import axios from 'axios';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
   
-const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicModelDataNegative, updateStaticData}) => {
+const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicModelDataNegative, updateStaticData, updateSaveData}) => {
     const [google_play_id, set_google_play_id] = useState('');
     const [number_reviews, set_number_reviews] = useState('');
     const [file_name, set_file_name] = useState('');
@@ -14,6 +14,7 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
     const [topicModelDataNegative, setTopicModelDataNegative] = useState('');
     const [staticData, setStaticData] = useState('');
     const [createDisabled, setCreateDisabled] = useState(false);
+    const [saveData, setSaveData] = useState('')
 
     const change_google_play_id = (event) => {
         set_google_play_id(event.target.value);
@@ -40,6 +41,10 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
     };
 
     const clearState = () => {
+        setSaveData({
+            "id": google_play_id,
+            "numReviews": number_reviews
+        })
         set_google_play_id('');
         set_number_reviews('');
         set_file_name('');
@@ -86,15 +91,13 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
         if(reviewData !== ""){
             updateReviewData(reviewData);
             getTopicModelDataPositive();
-           
         }
       }, [reviewData]);
     
     useEffect(() => {
         if(topicModelDataPositive !== ""){
             updateTopicModelDataPositive(topicModelDataPositive);
-            getTopicModelDataNegative();
-            
+            getTopicModelDataNegative();  
         }
     }, [topicModelDataPositive]);
 
@@ -108,6 +111,7 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
     useEffect(() => {
         if(staticData !== ""){
             updateStaticData(staticData);
+            updateSaveData(saveData);
             goToAnalysis();
         }
     }, [staticData]);

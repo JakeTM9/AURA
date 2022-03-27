@@ -16,6 +16,7 @@ function App() {
   const [analysisTopicModelDataPositive, setAnalysisTopicModelDataPositive] = useState('');
   const [analysisTopicModelDataNegative, setAnalysisTopicModelDataNegative] = useState('');
   const [analysisStaticData, setAnalysisStaticData] = useState('');
+  const [analysisSaveData, setAnalysisSaveData] = useState('');
   return (
     <>
       {/* This is the alias of BrowserRouter i.e. Router */}
@@ -29,14 +30,14 @@ function App() {
           {/* This route is for about component 
           with exact path "/create", in component 
           props we passes the imported component*/}
-          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelDataPositive = {setAnalysisTopicModelDataPositive} updateTopicModelDataNegative = {setAnalysisTopicModelDataNegative} updateStaticData = {setAnalysisStaticData}/>} />
+          <Route path="/create" element={<Create updateReviewData = {setAnalysisReviewData} updateTopicModelDataPositive = {setAnalysisTopicModelDataPositive} updateTopicModelDataNegative = {setAnalysisTopicModelDataNegative} updateStaticData = {setAnalysisStaticData} updateSaveData = {setAnalysisSaveData}/>} />
             
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
           <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelDataPositive = {analysisTopicModelDataPositive} topicModelDataNegative = {analysisTopicModelDataNegative} staticData= {analysisStaticData}/>} />
           
-          <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelDataPositive}/>} />{/*fix saving pos/neg later*/}
+          <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelDataPositive} saveData={analysisSaveData}/>} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}

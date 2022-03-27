@@ -45,8 +45,9 @@ def get_anlysis_cards():
 @app.route('/api/saveAnalysisData')
 def save_analysis_data():
     title = request.args['title']
-    topic_model_data = request.args['topicModelData[]']
-    saved_analyses.add(title, topic_model_data)
+    id = request.args['id']
+    numReviews = request.args['numReviews']
+    saved_analyses.add(title, id, numReviews)
     
     return {} #dont need to return anything now: in the future we can return a fail in case of a duplicate name or smth
 

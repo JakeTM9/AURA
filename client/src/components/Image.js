@@ -20,7 +20,6 @@ const Image = (data) => {
     }
 
     useEffect(() =>  {
-        console.log(data.name);
         getImage();
     });
 

@@ -5,17 +5,24 @@ import Analysis from "./Analysis";
 import axios from 'axios';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
 
-const Save = ({reviewData, topicModelData}) => {
+const Save = ({reviewData, topicModelData, saveData}) => {
     const [title, set_title] = useState('');
+    const [id, set_id] = useState('');
+    const [numReviews, set_numReviews] = useState('');
     const [saveDisabled, setSaveDisabled] = useState(false);
     const change_title = (event) => {
         set_title(event.target.value);
     };
+    useEffect(() => {
+        set_id(saveData.id);
+        set_numReviews(saveData.numReviews);
+    });
     const transferValue = (event) => {
         event.preventDefault();
         const data = {
             title,
-            topicModelData
+            id,
+            numReviews
         }
         setSaveDisabled(true);
         saveAnalysisData(data);
