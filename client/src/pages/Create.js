@@ -14,11 +14,11 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
     const [topicModelDataNegative, setTopicModelDataNegative] = useState('');
     const [staticData, setStaticData] = useState('');
     const [createDisabled, setCreateDisabled] = useState(false);
-    const [saveData, setSaveData] = useState('')
+    const [saveData, setSaveData] = useState('');
 
     const change_google_play_id = (event) => {
         set_google_play_id(event.target.value);
-      };
+    };
       
     const change_number_reviews = (event) => {
         set_number_reviews(event.target.value);
@@ -36,6 +36,7 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
            file_name
         };
         setCreateDisabled(true);
+        console.log(data);
         getReviewData(data);
         clearState();
     };
