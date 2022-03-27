@@ -17,6 +17,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
     const [selectValuePos, setSelectValuePos] = useState(0);
     const [selectValuePosImage, setSelectValuePosImage] = useState(0);
     const [selectValueNeg, setSelectValueNeg] = useState(0);
+    const [selectValueNegImage, setSelectValueNegImage] = useState(0);
     
     const Navigate = useNavigate();
     const goToSave = event => Navigate('/save', {replace:true});
@@ -39,6 +40,11 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
         e.preventDefault();
         console.log(e.target.value);
         setSelectValueNeg(e.target.value);
+    }
+    function handleChangeNegImage(e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        setSelectValueNegImage(e.target.value);
     }
     
     return (
@@ -72,16 +78,30 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                 <br></br>
                 {/*Wordclouds*/}
                 <div className = "row">
-                    <Image name={"wordcloud_" + selectValuePosImage + ".png"}></Image>
-                    <br></br>
-                    <select value={selectValuePosImage} id="topicPosImage" onChange = {(e) => handleChangePosImage(e)}>
-                            <option value= "0">Positive Topic #1</option>
-                            <option value= "1">Positive Topic #2</option>
-                            <option value= "2">Positive Topic #3</option>
-                            <option value= "3">Positive Topic #4</option>
-                            <option value= "4">Positive Topic #5</option>
-                            <option value= "5">Positive Topic #6</option>
-                    </select>
+                    <div className="column">
+                        <Image name={"wordcloudpositive_" + selectValuePosImage + ".png"}></Image>
+                        <br></br>
+                        <select value={selectValuePosImage} id="topicPosImage" onChange = {(e) => handleChangePosImage(e)}>
+                                <option value= "0">Positive Topic #1</option>
+                                <option value= "1">Positive Topic #2</option>
+                                <option value= "2">Positive Topic #3</option>
+                                <option value= "3">Positive Topic #4</option>
+                                <option value= "4">Positive Topic #5</option>
+                                <option value= "5">Positive Topic #6</option>
+                        </select>
+                    </div>
+                    <div className="column">
+                        <Image name={"wordcloudnegative_" + selectValueNegImage + ".png"}></Image>
+                        <br></br>
+                        <select value={selectValueNegImage} id="topicPosImage" onChange = {(e) => handleChangeNegImage(e)}>
+                                <option value= "0">Negative Topic #1</option>
+                                <option value= "1">Negative Topic #2</option>
+                                <option value= "2">Negative Topic #3</option>
+                                <option value= "3">Negative Topic #4</option>
+                                <option value= "4">Negative Topic #5</option>
+                                <option value= "5">Negative Topic #6</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div className = "row hide">

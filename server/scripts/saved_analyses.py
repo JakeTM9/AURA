@@ -5,7 +5,6 @@ def main():
     uploads_dir = os.path.join(os.getcwd(), 'review_data')
     finalPath = os.path.join(uploads_dir, 'saved_analyses' + '.csv')
     df = pd.read_csv(finalPath)
-    print(df)
     return
 
 def add(title,topic_model_data):
