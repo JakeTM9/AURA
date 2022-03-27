@@ -5,9 +5,10 @@ import Analysis from "./Analysis";
 import Card from "../components/Card"
 import axios from 'axios';
 
-const Home = () => {
+const Home = ({updateInUseSaveData}) => {
     const [showWarning, setShowWarning] = useState(true);
     const [cards, setCards] = useState([])
+    const [inUseSaveData, setInUseSaveData] = useState('');
 
     async function getAnalysisCards() {
         let res = await axios.get("/api/getAnalysisCards", {
@@ -25,7 +26,6 @@ const Home = () => {
     useEffect(() => {
         if(cards.length !== 0){
             setShowWarning(false)
-            console.log(cards)
         }
     }, [cards]);
 
@@ -49,7 +49,7 @@ const Home = () => {
                 <div class="thumbnails">
                     <div class="group">
                         {cards.map((card) => (
-                        <Card key = {card.title} card={card}/>
+                        <Card key = {card.title} card={card} updateInUseSaveData={updateInUseSaveData}/>
                         ))}
                     </div>
 		        </div>

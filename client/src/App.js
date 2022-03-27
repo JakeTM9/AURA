@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Analysis from "./pages/Analysis";
 import Save from "./pages/Save";
+import SavedAnalysis from './pages/SavedAnalysis';
 
 function App() {
   const [analysisReviewData, setAnalysisReviewData] = useState('');
@@ -17,6 +18,7 @@ function App() {
   const [analysisTopicModelDataNegative, setAnalysisTopicModelDataNegative] = useState('');
   const [analysisStaticData, setAnalysisStaticData] = useState('');
   const [analysisSaveData, setAnalysisSaveData] = useState('');
+  const [inUseSaveData, setInUseSaveData] = useState(''); 
   return (
     <>
       {/* This is the alias of BrowserRouter i.e. Router */}
@@ -25,7 +27,7 @@ function App() {
           {/* This route is for home component 
           with exact path "/", in component props 
           we passes the imported component*/}
-          <Route path="/home" element={<Home/>} />
+          <Route path="/home" element={<Home updateInUseSaveData = {setInUseSaveData} />} />
             
           {/* This route is for about component 
           with exact path "/create", in component 
@@ -36,6 +38,8 @@ function App() {
           with exact path "/analysis", in 
           component props we passes the imported component*/}
           <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelDataPositive = {analysisTopicModelDataPositive} topicModelDataNegative = {analysisTopicModelDataNegative} staticData= {analysisStaticData}/>} />
+
+          <Route path="/savedAnalysis" element={<SavedAnalysis savedData={inUseSaveData}/>} />
           
           <Route path="/save" element={<Save reviewData={analysisReviewData} topicModelData={analysisTopicModelDataPositive} saveData={analysisSaveData}/>} />
           {/* If any route mismatches the upper 

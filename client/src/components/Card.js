@@ -1,11 +1,23 @@
 import SavedImage from "./SavedImage"
-const Card = (card) => {
-    console.log(card);
+import Home from "../pages/Home"
+import {BrowserRouter as Router,useNavigate} from "react-router-dom";
+const Card = ({card, updateInUseSaveData}) => {
+    const Navigate = useNavigate();
+    const goToSavedAnalysis = event => Navigate('/savedAnalysis', {replace:true});
+    const openAnalysis = (event) => {
+        event.preventDefault();
+        const data = {
+            "id": card.id,
+            "numReviews": card.numReviews
+        };
+        updateInUseSaveData(data);
+        goToSavedAnalysis();
+    };
     return (
-        //I hate that im doing card.card but im short on time to fix -> Update: fix is taking longer than 10 minutes so Im moving on
-        <a href="#" key = {`${card.card.title}_active`} title={card.card.title}>
-            <SavedImage name={"card" + card.card.index + ".png"}></SavedImage>
-            <span key={`${card.card.title}_label`}>{card.card.title}</span>
+        
+        <a href="#" onClick={openAnalysis} key = {`${card.title}_active`} title={card.title}>
+            <SavedImage name={"card" + card.index + ".png"}></SavedImage>
+            <span key={`${card.title}_label`}>{card.title}</span>
         </a>
     );
 }
