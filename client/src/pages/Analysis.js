@@ -104,7 +104,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                     </div>
                 </div>
 
-                <div className = "row hide">
+                {/*<div className = "row hide">
                     <div className="column">
                         <h3>Please Select a Topic:</h3>
                         <select value={selectValuePos} id="topicPos" onChange = {(e) => handleChangePos(e)}>
@@ -132,7 +132,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                         <br></br>
                         
                     </div>
-                </div>
+                </div> */}
                 <br></br>
             </div>
         </div>

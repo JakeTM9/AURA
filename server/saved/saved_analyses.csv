@@ -1,2 +1,4 @@
-title,id,numReviews
-pokemon go,com.netflix.mediaclient,500
+index,title,id,numReviews
+0,netflix,com.netflix.mediaclient,1000
+1,disney plus,com.disney.disneyplus,1000
+2,snapchat,com.snapchat.android,1000

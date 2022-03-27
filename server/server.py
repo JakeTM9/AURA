@@ -55,3 +55,8 @@ image_dir = os.path.join(os.getcwd(), 'img')
 @app.route('/api/getImage/<path:path>')
 def static_dir(path):
     return send_from_directory(image_dir, path)
+
+saved_image_dir = os.path.join(os.getcwd(), 'saved','images')
+@app.route('/api/getSavedImage/<path:path>')
+def static_dir2(path):
+    return send_from_directory(saved_image_dir, path)
