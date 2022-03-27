@@ -127,7 +127,7 @@ const Create = ({updateReviewData, updateTopicModelDataPositive, updateTopicMode
                     <br></br>
                     <h2>Google Play ID:</h2>
                     <input type="text" value={google_play_id} onChange={change_google_play_id} id="google_play_id" name="google_play_id"/>
-                    <h2>Number of Reviews to Scrape:</h2>
+                    <h2>Number of Reviews to Scrape (minimum 1000):</h2>
                     <input type="text" value={number_reviews} onChange={change_number_reviews} id="number_reviews" name="number_reviews"/>
                     <h2 className="hidden">Name (for file):</h2>
                     <input type="text" className="hidden" value={file_name} onChange={change_file_name} id="file_name" name="file_name"/>
