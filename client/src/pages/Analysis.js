@@ -15,6 +15,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
     }, [staticData]);
 
     const [selectValuePos, setSelectValuePos] = useState(0);
+    const [selectValuePosImage, setSelectValuePosImage] = useState(0);
     const [selectValueNeg, setSelectValueNeg] = useState(0);
     
     const Navigate = useNavigate();
@@ -28,6 +29,11 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
         e.preventDefault();
         console.log(e.target.value);
         setSelectValuePos(e.target.value);
+    }
+    function handleChangePosImage(e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        setSelectValuePosImage(e.target.value);
     }
     function handleChangeNeg(e) {
         e.preventDefault();
@@ -62,21 +68,23 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                             <h5  className="information"> (Using NLTK's sentiment analysis model, vader)</h5>
                             <br></br>
                 </div>
+                
+                <br></br>
+                {/*Wordclouds*/}
                 <div className = "row">
-                    
-                    <div className = "column" >
-                        
-                    </div>
-                    <div className = "column">
-                        
-                    </div>
-                    
+                    <Image name={"wordcloud_" + selectValuePosImage + ".png"}></Image>
+                    <br></br>
+                    <select value={selectValuePosImage} id="topicPosImage" onChange = {(e) => handleChangePosImage(e)}>
+                            <option value= "0">Positive Topic #1</option>
+                            <option value= "1">Positive Topic #2</option>
+                            <option value= "2">Positive Topic #3</option>
+                            <option value= "3">Positive Topic #4</option>
+                            <option value= "4">Positive Topic #5</option>
+                            <option value= "5">Positive Topic #6</option>
+                    </select>
                 </div>
 
-                <div className = "row">
-                    <h1>Topic Analysis</h1>
-                </div>
-                <div className = "row">
+                <div className = "row hide">
                     <div className="column">
                         <h3>Please Select a Topic:</h3>
                         <select value={selectValuePos} id="topicPos" onChange = {(e) => handleChangePos(e)}>
@@ -106,7 +114,6 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                     </div>
                 </div>
                 <br></br>
-                <Image name={"wordcloud_2.png"}></Image>
             </div>
         </div>
     );

@@ -55,6 +55,13 @@ header .h1 {
 .green {color:green}
 .red {color:red}
 
+/*Image Styling */
+.wordcloud {
+	border: 1px solid black;
+	width:500px; 
+	height:250px;
+}
+
 
 
 .bnCA {

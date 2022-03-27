@@ -18,14 +18,14 @@ const Image = (data) => {
             setSource("data:;base64," + base64);
         });
     }
-    
+
     useEffect(() =>  {
         console.log(data.name);
         getImage();
     });
 
     return (
-        <img src={source} />
+        <img src={source} className='wordcloud'/>
     );
 }
 export default Image;
