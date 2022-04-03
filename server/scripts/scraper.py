@@ -11,6 +11,8 @@ def ScrapeReviews(id =  'com.nianticlabs.pokemongo', length = 1000):
     result = reviews(id, count=length)
     return result
 
+def scrapeIcon(google_play_id):
+    return app(google_play_id)["icon"]
 
 
 #imports to a CSV

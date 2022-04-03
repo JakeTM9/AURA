@@ -37,7 +37,7 @@ function App() {
           {/* This route is for contactus component
           with exact path "/analysis", in 
           component props we passes the imported component*/}
-          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelDataPositive = {analysisTopicModelDataPositive} topicModelDataNegative = {analysisTopicModelDataNegative} staticData= {analysisStaticData}/>} />
+          <Route path="/analysis" element={<Analysis reviewData={analysisReviewData} topicModelDataPositive = {analysisTopicModelDataPositive} topicModelDataNegative = {analysisTopicModelDataNegative} staticData= {analysisStaticData} saveData={analysisSaveData}/>} />
 
           <Route path="/savedAnalysis" element={<SavedAnalysis savedData={inUseSaveData}/>} />
           

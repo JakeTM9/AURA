@@ -4,7 +4,7 @@ import axios from 'axios';
 const SavedImage = (data) => {
     const [source, setSource] = useState("");
 
-    async function getImage() {
+    async function UnusedGetImage(){
         let res = await axios.get("/api/getSavedImage/" + data.name, {
             responseType: 'arraybuffer'
         })
@@ -17,6 +17,13 @@ const SavedImage = (data) => {
             );
             setSource("data:;base64," + base64);
         });
+    }
+
+    async function getImage() {
+        await axios.get("/api/getAppIcon/" + data.id)
+        .then(res => {
+            setSource(res.data)
+        })
     }
 
     useEffect(() =>  {

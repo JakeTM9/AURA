@@ -16,7 +16,7 @@ const Card = ({card, updateInUseSaveData}) => {
     return (
         
         <a href="#" onClick={openAnalysis} key = {`${card.title}_active`} title={card.title}>
-            <SavedImage name={"card" + card.index + ".png"}></SavedImage>
+            <SavedImage id={card.id} name={"card" + card.index + ".png"}></SavedImage>
             <span key={`${card.title}_label`}>{card.title}</span>
         </a>
     );

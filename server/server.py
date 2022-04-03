@@ -20,6 +20,12 @@ def get_review_data():
     sentiment_analysis.run()
     return jsonify(data[0])
 
+@app.route('/api/getAppIcon/<path:app_id>')
+def get_app_icon(app_id):
+    items = scraper.scrapeIcon(app_id)
+    print(app_id)
+    return items
+
 ##gonna split nega and positive
 @app.route('/api/getTopicModelDataPositive')
 def get_topic_model_data_positive():

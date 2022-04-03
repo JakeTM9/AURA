@@ -17,6 +17,11 @@ body {
 	color: #333
 }
 
+.identifier{
+	width: 5%;
+	vertical-align: bottom;
+}
+
 #container {
 	background: lightsteelblue;
 	border: 1px solid black;

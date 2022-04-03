@@ -6,18 +6,25 @@ import Image from "../components/Image"
 import TopicChart from "../charts/TopicChart";
 import * as d3 from 'd3';
 import {BrowserRouter as Router,useNavigate} from "react-router-dom";
+import axios from 'axios';
   
-const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, staticData}) => {
+const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, staticData, saveData}) => {
     useEffect(() => {
         if(staticData !== ""){
             //console.log(staticData); //ToDO
         }
     }, [staticData]);
 
+    useEffect(() => {
+        axios.get("/api/getAppIcon/" + saveData.id)
+        .then(res => setAppIcon(res.data))
+    }, []);
+
     const [selectValuePos, setSelectValuePos] = useState(0);
     const [selectValuePosImage, setSelectValuePosImage] = useState(0);
     const [selectValueNeg, setSelectValueNeg] = useState(0);
     const [selectValueNegImage, setSelectValueNegImage] = useState(0);
+    const [appIcon, setAppIcon] = useState("");
     
     const Navigate = useNavigate();
     const goToSave = event => Navigate('/save', {replace:true});
@@ -51,7 +58,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
         <div>
             <div id="container">
                 <header>
-                    <h1>AURA Analysis</h1>
+                    <h1>AURA Analysis <img className='identifier' src={appIcon}/> </h1>
                     <div className="float-left">
                             <a href="/home">
                             <button className="bnCA ">Back to Home</button>
