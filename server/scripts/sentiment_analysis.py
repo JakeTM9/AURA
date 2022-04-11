@@ -1,5 +1,7 @@
 import nltk
 import os
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 pd.set_option("display.max_colwidth", 10000) ## fix for truncated review
 

@@ -63,8 +63,13 @@ header .h1 {
 /*Image Styling */
 .wordcloud {
 	border: 1px solid black;
+	/*
 	width:500px; 
 	height:250px;
+	*/
+	width: 90%;
+	height: 45%;
+
 }
 .homecard {
 	width:290px; 

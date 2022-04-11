@@ -1,6 +1,8 @@
 # Code from topic modelling homework
 # TODO:
 import os
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
