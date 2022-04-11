@@ -58,7 +58,7 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
         <div>
             <div id="container">
                 <header>
-                    <h1>AURA Analysis <img className='identifier' src={appIcon}/> </h1>
+                    <h1> <img className='identifier' src={appIcon}/>  AURA Analysis <img className='identifier' src={appIcon}/> </h1>
                     <div className="float-left">
                             <a href="/home">
                             <button className="bnCA ">Back to Home</button>
@@ -72,10 +72,10 @@ const Analysis = ({reviewData, topicModelDataPositive, topicModelDataNegative, s
                 </header>
                 <br></br>
                 <div className = "textInfo">
-                            <h3 className="information"><span className="bigger">{staticData.ReviewCount}</span> reviews processed with an average score of <span className="bigger">{staticData.AvgScore.toFixed(2)}/5</span></h3>
+                            <h3 className="information"><span className="bigger">{staticData.ReviewCount}</span> reviews processed with an average score of <span className="bigger">{staticData.AvgScore.toFixed(1)}/5</span></h3>
                             <h3 className="information"> </h3>
                                 
-                            <h3 className="information"> On average, reviews contained <span className="bigger">{staticData.avgWordCount.toFixed(2)}</span> words</h3>
+                            <h3 className="information"> On average, reviews contained <span className="bigger">{staticData.avgWordCount.toFixed(0)}</span> words</h3>
                             
                             <h3> <span className="bigger green">{staticData.PositiveReviewCount}</span> reviews were classified as positive, while <span className="bigger red">{staticData.NegativeReviewCount}</span> were classified as negative</h3>
                             <h5  className="information"> (Using NLTK's sentiment analysis model, vader)</h5>

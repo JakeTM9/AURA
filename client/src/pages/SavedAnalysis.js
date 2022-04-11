@@ -22,10 +22,16 @@ const SavedAnalysis = ({savedData}) => {
     const [isDoneRerun, setIsDoneRerun] = useState(false);
     const Navigate = useNavigate();
     const goToSave = event => Navigate('/save', {replace:true});
+    const [appIcon, setAppIcon] = useState("");
     const saveAnalysis = (event) => {
         event.preventDefault();
         goToSave();
     }
+
+    useEffect(() => {
+        axios.get("/api/getAppIcon/" + savedData.id)
+        .then(res => setAppIcon(res.data))
+    }, []);
 
     useEffect(() => {
         const data = {
@@ -95,6 +101,8 @@ const SavedAnalysis = ({savedData}) => {
         if(staticData !== ""){
             console.log(reviewData);
             console.log(staticData);
+            staticData.AvgScore = staticData.AvgScore.toFixed(1)
+            staticData.avgWordCount = staticData.avgWordCount.toFixed(0)
             //here
             setIsDoneRerun(true);
         }
@@ -125,7 +133,7 @@ const SavedAnalysis = ({savedData}) => {
         <div>
             <div id="container">
                 <header>
-                    <h1>AURA Analysis</h1>
+                    <h1><img className='identifier' src={appIcon}/>AURA Analysis<img className='identifier' src={appIcon}/></h1>
                     <div className="float-left">
                             <a href="/home">
                             <button className="bnCA ">Back to Home</button>
